@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-navy-900: #0A1628;
+    --color-navy-800: #192842;
+    --color-navy-700: #263c63;
+    --color-amber-600: #D4A853;
+    --color-amber-500: #f59e0b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .app-canvas {
+    background-color: #f6f8fc;
+    background-image:
+      radial-gradient(1200px 400px at 100% -10%, rgba(212, 168, 83, 0.06), transparent),
+      radial-gradient(900px 500px at -10% 0%, rgba(10, 22, 40, 0.04), transparent);
+  }
+
+  .shadow-card {
+    box-shadow: 0 1px 2px rgba(10, 22, 40, 0.04), 0 4px 16px rgba(10, 22, 40, 0.06);
+  }
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .gradient-navy {
+    background: linear-gradient(135deg, #0A1628 0%, #192842 50%, #263c63 100%);
+  }
+
+  .gradient-amber {
+    background: linear-gradient(135deg, #D4A853 0%, #f59e0b 100%);
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, #D4A853 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+}
+
+/* Print: isolate the POS receipt so window.print() outputs only it. */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #receipt-print,
+  #receipt-print *,
+  #report-print,
+  #report-print * {
+    visibility: visible !important;
+  }
+  #receipt-print,
+  #report-print {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+  }
+}
