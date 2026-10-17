@@ -13,6 +13,7 @@ import {
   UserRound,
   ShoppingCart,
   Send,
+  Package,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 
@@ -48,6 +49,7 @@ const sections: NavSection[] = [
     title: "Stock",
     items: [
       { href: "/dashboard/inventory", label: "Inventory", icon: Warehouse },
+      { href: "/dashboard/products", label: "Products", icon: Package },
       { href: "/dashboard/report", label: "Shift Report", icon: BarChart3 },
     ],
   },

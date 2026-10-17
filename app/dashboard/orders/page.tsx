@@ -22,6 +22,7 @@ import {
   Modal,
   PageHeader,
   StatTile,
+  SkeletonList,
   ExportMenu,
   useToast,
   type Column,
@@ -560,7 +561,7 @@ export default function PortalOrdersPage() {
         }
       >
         {detailLoading && (
-          <p className="py-8 text-center text-sm text-slate-500">Loading order…</p>
+          <SkeletonList rows={4} />
         )}
         {viewing && !detailLoading && (
           <div id="receipt-print" className="space-y-4 text-sm">

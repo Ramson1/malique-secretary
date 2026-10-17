@@ -21,6 +21,8 @@ export interface StatTileProps {
   accent?: Accent;
   sparkline?: ReactNode;
   onClick?: () => void;
+  /** Show a skeleton placeholder while the metric loads from the database. */
+  loading?: boolean;
 }
 
 export function StatTile({
@@ -32,8 +34,21 @@ export function StatTile({
   accent = "amber",
   sparkline,
   onClick,
+  loading = false,
 }: StatTileProps) {
   const a = accents[accent];
+  if (loading) {
+    return (
+      <div
+        aria-hidden
+        className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+      >
+        <div className="h-11 w-11 animate-pulse rounded-xl bg-slate-200/70" />
+        <div className="mt-4 h-7 w-24 animate-pulse rounded-md bg-slate-200/70" />
+        <div className="mt-2 h-4 w-1/2 animate-pulse rounded-md bg-slate-200/70" />
+      </div>
+    );
+  }
   return (
     <div
       onClick={onClick}
